@@ -136,7 +136,19 @@
 }
 -(void)SetEntryImageStr:(NSString *)imgStr
 {
-    [self.EntryImageView setImageWithURL:[NSURL URLWithString:imgStr] placeholderImage:nil];
+    if(imgStr == nil)
+    {
+         // The entry has no image in it
+        [self.activityIndicator setHidden:YES];
+        self.EntryImageView.frame=CGRectZero;
+        self.NewsLbl.frame=CGRectMake(2,self.NewsLbl.frame.origin.y, self.frame.size.width-4, self.frame.size.height-self.HeaderLbl.frame.size.height-2);
+    }
+    else
+    {
+        // There is valid image in the entry
+        
+        [self.EntryImageView setImageWithURL:[NSURL URLWithString:imgStr] placeholderImage:nil]; // loads image from url
+    }
 
 }
 

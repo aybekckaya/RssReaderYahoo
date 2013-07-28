@@ -10,6 +10,8 @@
 #import "Parser.h"
 #import "MBProgressHUD.h"
 #import "RssCellCL.h"
+#import "TitleViewCL.h"
+#import "DetailVC.h"
 
 /*
     - Internet baglantisi olmadigi zamanki test 

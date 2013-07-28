@@ -32,6 +32,7 @@
 @property(nonatomic,weak) IBOutlet UILabel *NewsLbl;
 @property(nonatomic,weak) IBOutlet UIButton *twitterBtn;
 @property(nonatomic,weak) IBOutlet UIButton *detailsBtn;
+@property(nonatomic,weak) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 -(IBAction)ButtonOnClick:(id)sender;
 

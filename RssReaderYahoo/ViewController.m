@@ -14,10 +14,30 @@
 
 @implementation ViewController
 
+
+
+
+
+-(void)awakeFromNib
+{
+    /*
+    NSArray* views = [[NSBundle mainBundle] loadNibNamed:@"TitleView" owner:nil options:nil];
+    UILabel *NavBarTitleView=(TitleViewCL *)[views objectAtIndex:0];
+    UINavigationItem *navItem=self.navigationController.navigationItem;
+    [self.navigationController.navigationItem setTitleView:NavBarTitleView];
+     */
+}
+
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    
+    
+    
     
     CHUD=[[MBProgressHUD alloc]initWithView:self.view];
     [self.view addSubview:CHUD];
@@ -253,6 +273,10 @@
     else if([button tag] == 1072)
     {
         // details Btn
+        DetailVC *newViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailNewsView"];
+        newViewController.NewsURL=_link;
+        [self.navigationController pushViewController:newViewController animated:YES];
+        
     }
 }
 

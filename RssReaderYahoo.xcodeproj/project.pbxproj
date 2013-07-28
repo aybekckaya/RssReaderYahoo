@@ -10,6 +10,9 @@
 		A397ADAA17A5537700CBE3CE /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A397ADA917A5537700CBE3CE /* MainStoryboard.storyboard */; };
 		A397ADAD17A5A4D400CBE3CE /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = A397ADAC17A5A4D400CBE3CE /* NSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A397ADB017A5A53300CBE3CE /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = A397ADAF17A5A53300CBE3CE /* GTMNSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A397ADB217A5B7AE00CBE3CE /* TitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A397ADB117A5B7AE00CBE3CE /* TitleView.xib */; };
+		A397ADB617A5B7F600CBE3CE /* TitleViewCL.m in Sources */ = {isa = PBXBuildFile; fileRef = A397ADB517A5B7F600CBE3CE /* TitleViewCL.m */; };
+		A397ADB917A5BAB500CBE3CE /* DetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A397ADB817A5BAB500CBE3CE /* DetailVC.m */; };
 		A39D1CFB17A4C520001E9CF3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A39D1CFA17A4C520001E9CF3 /* UIKit.framework */; };
 		A39D1CFD17A4C520001E9CF3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A39D1CFC17A4C520001E9CF3 /* Foundation.framework */; };
 		A39D1CFF17A4C520001E9CF3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A39D1CFE17A4C520001E9CF3 /* CoreGraphics.framework */; };
@@ -61,6 +64,11 @@
 		A397ADAC17A5A4D400CBE3CE /* NSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTML.m"; sourceTree = "<group>"; };
 		A397ADAE17A5A53300CBE3CE /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
 		A397ADAF17A5A53300CBE3CE /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
+		A397ADB117A5B7AE00CBE3CE /* TitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TitleView.xib; path = RssReaderYahoo/TitleView.xib; sourceTree = "<group>"; };
+		A397ADB417A5B7F600CBE3CE /* TitleViewCL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleViewCL.h; sourceTree = "<group>"; };
+		A397ADB517A5B7F600CBE3CE /* TitleViewCL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleViewCL.m; sourceTree = "<group>"; };
+		A397ADB717A5BAB500CBE3CE /* DetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailVC.h; sourceTree = "<group>"; };
+		A397ADB817A5BAB500CBE3CE /* DetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailVC.m; sourceTree = "<group>"; };
 		A39D1CF717A4C520001E9CF3 /* RssReaderYahoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RssReaderYahoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A39D1CFA17A4C520001E9CF3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A39D1CFC17A4C520001E9CF3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -208,9 +216,20 @@
 			name = EntryObject;
 			sourceTree = "<group>";
 		};
+		A397ADB317A5B7B800CBE3CE /* NavigationBarTitle */ = {
+			isa = PBXGroup;
+			children = (
+				A397ADB117A5B7AE00CBE3CE /* TitleView.xib */,
+				A397ADB417A5B7F600CBE3CE /* TitleViewCL.h */,
+				A397ADB517A5B7F600CBE3CE /* TitleViewCL.m */,
+			);
+			name = NavigationBarTitle;
+			sourceTree = "<group>";
+		};
 		A39D1CEE17A4C520001E9CF3 = {
 			isa = PBXGroup;
 			children = (
+				A397ADB317A5B7B800CBE3CE /* NavigationBarTitle */,
 				A397ADA817A5516C00CBE3CE /* EntryObject */,
 				A397ADA717A5515A00CBE3CE /* XmlParser */,
 				A397ADA617A5512300CBE3CE /* RssCell */,
@@ -255,6 +274,8 @@
 				A39D1D0917A4C520001E9CF3 /* AppDelegate.h */,
 				A39D1D0A17A4C520001E9CF3 /* AppDelegate.m */,
 				A39D1D0117A4C520001E9CF3 /* Supporting Files */,
+				A397ADB717A5BAB500CBE3CE /* DetailVC.h */,
+				A397ADB817A5BAB500CBE3CE /* DetailVC.m */,
 			);
 			path = RssReaderYahoo;
 			sourceTree = "<group>";
@@ -369,6 +390,7 @@
 				A39D1D1117A4C520001E9CF3 /* Default-568h@2x.png in Resources */,
 				A39D1D6517A4C55A001E9CF3 /* RssCell.xib in Resources */,
 				A397ADAA17A5537700CBE3CE /* MainStoryboard.storyboard in Resources */,
+				A397ADB217A5B7AE00CBE3CE /* TitleView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,6 +447,8 @@
 				A39D1D6D17A4C579001E9CF3 /* ViewController.m in Sources */,
 				A397ADAD17A5A4D400CBE3CE /* NSString+HTML.m in Sources */,
 				A397ADB017A5A53300CBE3CE /* GTMNSString+HTML.m in Sources */,
+				A397ADB617A5B7F600CBE3CE /* TitleViewCL.m in Sources */,
+				A397ADB917A5BAB500CBE3CE /* DetailVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

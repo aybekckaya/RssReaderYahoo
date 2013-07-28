@@ -97,6 +97,9 @@
         NSString *rawDescriptionStr=[item objectForKey:@"description"];
         theEntry.description=[self HtmlStringToReadableString:rawDescriptionStr];
         theEntry.imageStr=[[item objectForKey:@"media:content"]objectForKey:@"_url"];
+        
+        
+        
         [Entries addObject:theEntry];
     }
     
@@ -116,8 +119,13 @@
 -(NSString *)HtmlStringToReadableString:(NSString *) HtmlString
 {
     NSMutableArray *matches=[Regex GetMatch:HtmlString Expression:@"alt=\"(.*?)\""];
-    NSString *RawStr=[[matches objectAtIndex:0]objectAtIndex:0];
     
+    if([matches count] == 0)
+    {
+        // In case the description gives as human readable String 
+        return HtmlString;
+    }
+    NSString *RawStr=[[matches objectAtIndex:0]objectAtIndex:0];
     NSString *finalStr=[RawStr substringWithRange:NSMakeRange(5, [RawStr length]-6)];
     
     
