@@ -25,7 +25,7 @@
     [CHUD show:YES];
     
     currentSelection=-1;
-    
+    // asdad
     RssItems=[[NSMutableArray alloc]init];
     XmlParser =[Parser SharedParser];
     XmlParser.delegate=self;
