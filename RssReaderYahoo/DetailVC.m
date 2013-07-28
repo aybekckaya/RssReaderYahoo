@@ -38,7 +38,7 @@
     
     NSLog(@"Link : %@",NewsURL);
     
-  //    NewsURL=@"asdad"; // error test
+  //     NewsURL=@"asdad"; // error test
     NSURL *url=[NSURL URLWithString:NewsURL];
     NSURLRequest *req=[NSURLRequest requestWithURL:url];
     [self.webview loadRequest:req];
