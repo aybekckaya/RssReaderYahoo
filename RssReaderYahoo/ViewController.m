@@ -69,7 +69,16 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSArray* views = [[NSBundle mainBundle] loadNibNamed:@"RssCell" owner:nil options:nil];
     
+    RssCellCL *tableCell=(RssCellCL *)[views objectAtIndex:0];
+    
+    if(indexPath.row == currentSelection)
+    {
+        return tableCell.frame.size.height;
+    }
+
+    return tableCell.frame.size.height-30;
 }
 
 
@@ -105,7 +114,16 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    int row = [indexPath row];
+    currentSelection = row;
     
+    
+    
+    
+    
+    //[tableView reloadData];
+    [tableView beginUpdates];
+    [tableView endUpdates];
 }
 
 #pragma mark TableViewDelegates END

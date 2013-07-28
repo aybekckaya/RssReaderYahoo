@@ -23,4 +23,9 @@
     int currentSelection;
 }
 
+
+@property(nonatomic,weak) IBOutlet UITableView *RssTable;
+@property(nonatomic,strong) IBOutlet UIActivityIndicatorView *LoadingIndicator;
+
+
 @end

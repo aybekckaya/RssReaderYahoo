@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A397ADAA17A5537700CBE3CE /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A397ADA917A5537700CBE3CE /* MainStoryboard.storyboard */; };
 		A39D1CFB17A4C520001E9CF3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A39D1CFA17A4C520001E9CF3 /* UIKit.framework */; };
 		A39D1CFD17A4C520001E9CF3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A39D1CFC17A4C520001E9CF3 /* Foundation.framework */; };
 		A39D1CFF17A4C520001E9CF3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A39D1CFE17A4C520001E9CF3 /* CoreGraphics.framework */; };
@@ -40,7 +41,6 @@
 		A39D1D6917A4C55A001E9CF3 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = A39D1D5617A4C55A001E9CF3 /* UIImageView+AFNetworking.m */; };
 		A39D1D6A17A4C55A001E9CF3 /* XMLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = A39D1D5817A4C55A001E9CF3 /* XMLDictionary.m */; };
 		A39D1D6D17A4C579001E9CF3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A39D1D6C17A4C579001E9CF3 /* ViewController.m */; };
-		A39D1D6F17A4C5AA001E9CF3 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A39D1D6E17A4C5AA001E9CF3 /* MainStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A397ADA917A5537700CBE3CE /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		A39D1CF717A4C520001E9CF3 /* RssReaderYahoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RssReaderYahoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A39D1CFA17A4C520001E9CF3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A39D1CFC17A4C520001E9CF3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -111,7 +112,6 @@
 		A39D1D5817A4C55A001E9CF3 /* XMLDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLDictionary.m; sourceTree = "<group>"; };
 		A39D1D6B17A4C579001E9CF3 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		A39D1D6C17A4C579001E9CF3 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		A39D1D6E17A4C5AA001E9CF3 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,7 +138,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A39D1CEE17A4C520001E9CF3 = {
+		A397ADA517A550F900CBE3CE /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				A39D1D3517A4C55A001E9CF3 /* AFHTTPClient.h */,
@@ -151,7 +151,6 @@
 				A39D1D3C17A4C55A001E9CF3 /* AFJSONRequestOperation.m */,
 				A39D1D3D17A4C55A001E9CF3 /* AFNetworkActivityIndicatorManager.h */,
 				A39D1D3E17A4C55A001E9CF3 /* AFNetworkActivityIndicatorManager.m */,
-				A39D1D6E17A4C5AA001E9CF3 /* MainStoryboard.storyboard */,
 				A39D1D3F17A4C55A001E9CF3 /* AFNetworking.h */,
 				A39D1D4017A4C55A001E9CF3 /* AFPropertyListRequestOperation.h */,
 				A39D1D4117A4C55A001E9CF3 /* AFPropertyListRequestOperation.m */,
@@ -159,25 +158,57 @@
 				A39D1D4317A4C55A001E9CF3 /* AFURLConnectionOperation.m */,
 				A39D1D4417A4C55A001E9CF3 /* AFXMLRequestOperation.h */,
 				A39D1D4517A4C55A001E9CF3 /* AFXMLRequestOperation.m */,
-				A39D1D4617A4C55A001E9CF3 /* Entry.h */,
-				A39D1D4717A4C55A001E9CF3 /* Entry.m */,
-				A39D1D4817A4C55A001E9CF3 /* MBProgressHUD.h */,
-				A39D1D4917A4C55A001E9CF3 /* MBProgressHUD.m */,
-				A39D1D4A17A4C55A001E9CF3 /* Parser.h */,
-				A39D1D4B17A4C55A001E9CF3 /* Parser.m */,
-				A39D1D4C17A4C55A001E9CF3 /* Regex.h */,
-				A39D1D4D17A4C55A001E9CF3 /* Regex.m */,
-				A39D1D4E17A4C55A001E9CF3 /* RssCell.xib */,
-				A39D1D4F17A4C55A001E9CF3 /* RssCellCL.h */,
-				A39D1D5017A4C55A001E9CF3 /* RssCellCL.m */,
 				A39D1D5117A4C55A001E9CF3 /* TFNetwork.h */,
 				A39D1D5217A4C55A001E9CF3 /* TFNetwork.m */,
-				A39D1D5317A4C55A001E9CF3 /* TFStrings.h */,
-				A39D1D5417A4C55A001E9CF3 /* TFStrings.m */,
 				A39D1D5517A4C55A001E9CF3 /* UIImageView+AFNetworking.h */,
 				A39D1D5617A4C55A001E9CF3 /* UIImageView+AFNetworking.m */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		A397ADA617A5512300CBE3CE /* RssCell */ = {
+			isa = PBXGroup;
+			children = (
+				A39D1D4F17A4C55A001E9CF3 /* RssCellCL.h */,
+				A39D1D5017A4C55A001E9CF3 /* RssCellCL.m */,
+				A39D1D4E17A4C55A001E9CF3 /* RssCell.xib */,
+			);
+			name = RssCell;
+			sourceTree = "<group>";
+		};
+		A397ADA717A5515A00CBE3CE /* XmlParser */ = {
+			isa = PBXGroup;
+			children = (
+				A39D1D4A17A4C55A001E9CF3 /* Parser.h */,
+				A39D1D4B17A4C55A001E9CF3 /* Parser.m */,
+				A39D1D5317A4C55A001E9CF3 /* TFStrings.h */,
+				A39D1D5417A4C55A001E9CF3 /* TFStrings.m */,
 				A39D1D5717A4C55A001E9CF3 /* XMLDictionary.h */,
 				A39D1D5817A4C55A001E9CF3 /* XMLDictionary.m */,
+			);
+			name = XmlParser;
+			sourceTree = "<group>";
+		};
+		A397ADA817A5516C00CBE3CE /* EntryObject */ = {
+			isa = PBXGroup;
+			children = (
+				A39D1D4617A4C55A001E9CF3 /* Entry.h */,
+				A39D1D4717A4C55A001E9CF3 /* Entry.m */,
+			);
+			name = EntryObject;
+			sourceTree = "<group>";
+		};
+		A39D1CEE17A4C520001E9CF3 = {
+			isa = PBXGroup;
+			children = (
+				A397ADA817A5516C00CBE3CE /* EntryObject */,
+				A397ADA717A5515A00CBE3CE /* XmlParser */,
+				A397ADA617A5512300CBE3CE /* RssCell */,
+				A397ADA517A550F900CBE3CE /* Network */,
+				A39D1D4817A4C55A001E9CF3 /* MBProgressHUD.h */,
+				A39D1D4917A4C55A001E9CF3 /* MBProgressHUD.m */,
+				A39D1D4C17A4C55A001E9CF3 /* Regex.h */,
+				A39D1D4D17A4C55A001E9CF3 /* Regex.m */,
 				A39D1D0017A4C520001E9CF3 /* RssReaderYahoo */,
 				A39D1D2417A4C521001E9CF3 /* RssReaderYahooTests */,
 				A39D1CF917A4C520001E9CF3 /* Frameworks */,
@@ -213,6 +244,7 @@
 				A39D1D0917A4C520001E9CF3 /* AppDelegate.h */,
 				A39D1D0A17A4C520001E9CF3 /* AppDelegate.m */,
 				A39D1D0117A4C520001E9CF3 /* Supporting Files */,
+				A397ADA917A5537700CBE3CE /* MainStoryboard.storyboard */,
 			);
 			path = RssReaderYahoo;
 			sourceTree = "<group>";
@@ -326,7 +358,7 @@
 				A39D1D0F17A4C520001E9CF3 /* Default@2x.png in Resources */,
 				A39D1D1117A4C520001E9CF3 /* Default-568h@2x.png in Resources */,
 				A39D1D6517A4C55A001E9CF3 /* RssCell.xib in Resources */,
-				A39D1D6F17A4C5AA001E9CF3 /* MainStoryboard.storyboard in Resources */,
+				A397ADAA17A5537700CBE3CE /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,6 +585,7 @@
 				A39D1D3117A4C521001E9CF3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A39D1D3217A4C521001E9CF3 /* Build configuration list for PBXNativeTarget "RssReaderYahooTests" */ = {
 			isa = XCConfigurationList;
@@ -561,6 +594,7 @@
 				A39D1D3417A4C521001E9CF3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
