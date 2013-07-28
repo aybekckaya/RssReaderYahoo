@@ -1,13 +1,26 @@
 //
 //  ViewController.h
-//  RssReaderYahoo
+//  YahooRssReader
 //
 //  Created by aybek can kaya on 7/28/13.
 //  Copyright (c) 2013 aybek can kaya. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+#import "Parser.h"
+#import "MBProgressHUD.h"
+#import "RssCellCL.h"
 
-@interface ViewController : UIViewController
+/*
+    - Internet baglantisi olmadigi zamanki test 
+ */
+
+@interface ViewController : UIViewController<ParserDelegate,MBProgressHUDDelegate,UITableViewDataSource,UITableViewDelegate,RssCellDelegate>
+{
+    Parser *XmlParser;
+    MBProgressHUD *CHUD;
+    NSMutableArray *RssItems;
+    int currentSelection;
+}
 
 @end
