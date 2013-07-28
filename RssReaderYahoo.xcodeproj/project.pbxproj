@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A397ADAA17A5537700CBE3CE /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A397ADA917A5537700CBE3CE /* MainStoryboard.storyboard */; };
+		A397ADAD17A5A4D400CBE3CE /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = A397ADAC17A5A4D400CBE3CE /* NSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A397ADB017A5A53300CBE3CE /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = A397ADAF17A5A53300CBE3CE /* GTMNSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A39D1CFB17A4C520001E9CF3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A39D1CFA17A4C520001E9CF3 /* UIKit.framework */; };
 		A39D1CFD17A4C520001E9CF3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A39D1CFC17A4C520001E9CF3 /* Foundation.framework */; };
 		A39D1CFF17A4C520001E9CF3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A39D1CFE17A4C520001E9CF3 /* CoreGraphics.framework */; };
@@ -55,6 +57,10 @@
 
 /* Begin PBXFileReference section */
 		A397ADA917A5537700CBE3CE /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		A397ADAB17A5A4D400CBE3CE /* NSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTML.h"; sourceTree = "<group>"; };
+		A397ADAC17A5A4D400CBE3CE /* NSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTML.m"; sourceTree = "<group>"; };
+		A397ADAE17A5A53300CBE3CE /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
+		A397ADAF17A5A53300CBE3CE /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
 		A39D1CF717A4C520001E9CF3 /* RssReaderYahoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RssReaderYahoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A39D1CFA17A4C520001E9CF3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A39D1CFC17A4C520001E9CF3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -169,6 +175,10 @@
 		A397ADA617A5512300CBE3CE /* RssCell */ = {
 			isa = PBXGroup;
 			children = (
+				A397ADAE17A5A53300CBE3CE /* GTMNSString+HTML.h */,
+				A397ADAF17A5A53300CBE3CE /* GTMNSString+HTML.m */,
+				A397ADAB17A5A4D400CBE3CE /* NSString+HTML.h */,
+				A397ADAC17A5A4D400CBE3CE /* NSString+HTML.m */,
 				A39D1D4F17A4C55A001E9CF3 /* RssCellCL.h */,
 				A39D1D5017A4C55A001E9CF3 /* RssCellCL.m */,
 				A39D1D4E17A4C55A001E9CF3 /* RssCell.xib */,
@@ -241,10 +251,10 @@
 			children = (
 				A39D1D6B17A4C579001E9CF3 /* ViewController.h */,
 				A39D1D6C17A4C579001E9CF3 /* ViewController.m */,
+				A397ADA917A5537700CBE3CE /* MainStoryboard.storyboard */,
 				A39D1D0917A4C520001E9CF3 /* AppDelegate.h */,
 				A39D1D0A17A4C520001E9CF3 /* AppDelegate.m */,
 				A39D1D0117A4C520001E9CF3 /* Supporting Files */,
-				A397ADA917A5537700CBE3CE /* MainStoryboard.storyboard */,
 			);
 			path = RssReaderYahoo;
 			sourceTree = "<group>";
@@ -413,6 +423,8 @@
 				A39D1D6917A4C55A001E9CF3 /* UIImageView+AFNetworking.m in Sources */,
 				A39D1D6A17A4C55A001E9CF3 /* XMLDictionary.m in Sources */,
 				A39D1D6D17A4C579001E9CF3 /* ViewController.m in Sources */,
+				A397ADAD17A5A4D400CBE3CE /* NSString+HTML.m in Sources */,
+				A397ADB017A5A53300CBE3CE /* GTMNSString+HTML.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

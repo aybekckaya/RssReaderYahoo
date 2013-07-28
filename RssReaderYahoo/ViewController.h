@@ -13,14 +13,18 @@
 
 /*
     - Internet baglantisi olmadigi zamanki test 
+    - Loading background thread icinde calissin 
  */
 
-@interface ViewController : UIViewController<ParserDelegate,MBProgressHUDDelegate,UITableViewDataSource,UITableViewDelegate,RssCellDelegate>
+@interface ViewController : UIViewController<ParserDelegate,MBProgressHUDDelegate,UITableViewDataSource,UITableViewDelegate,RssCellDelegate,UIScrollViewDelegate>
 {
     Parser *XmlParser;
     MBProgressHUD *CHUD;
     NSMutableArray *RssItems;
     int currentSelection;
+    BOOL IsLoadingNewItems;
+    int TotalNumOfEntries;
+    BOOL TotalNumEntriesHasReached;
 }
 
 

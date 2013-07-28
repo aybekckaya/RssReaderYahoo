@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TFNetwork.h"
+#import "NSString+HTML.h"
 
 @class RssCellCL;
 
 @protocol RssCellDelegate <NSObject>
 
--(void)RssCellButtonDidClicked:(UIButton *)button;
+-(void)RssCellButtonDidClicked:(UIButton *)button Link:(NSString *) _link;
 
 @end
 
@@ -20,8 +22,10 @@
 @interface RssCellCL : UITableViewCell
 {
     id<RssCellDelegate> delegate;
+    NSString *EntryLink;
 }
 
+@property(nonatomic,strong) NSString *EntryLink;
 @property(nonatomic,strong) id<RssCellDelegate> delegate;
 @property(nonatomic,weak) IBOutlet UIImageView *EntryImageView;
 @property(nonatomic,weak) IBOutlet UILabel *HeaderLbl;
@@ -36,5 +40,9 @@
 -(void)SetNewsLblText:(NSString *)text;
 
 -(void)SetEntryImageStr:(NSString *)imgStr;
+
+-(void)OpenCell;
+
+-(void)CloseCell;
 
 @end

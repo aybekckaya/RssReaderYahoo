@@ -9,7 +9,7 @@
 #import "Parser.h"
 
 // how many rss items will be parsed in every request
-#define EntriesPerRequest 3
+#define EntriesPerRequest 11
 
 @implementation Parser
 @synthesize delegate;
