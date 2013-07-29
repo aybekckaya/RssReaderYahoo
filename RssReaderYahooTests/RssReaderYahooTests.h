@@ -7,7 +7,10 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
+#import "Parser.h"
 
 @interface RssReaderYahooTests : SenTestCase
-
+{
+    Parser *XmlParser;
+}
 @end

@@ -42,7 +42,7 @@ _Pragma("clang diagnostic pop") \
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         //On Success
-        NSLog(@"JSON Parse Edilmis: %@", JSON);
+     //   NSLog(@"JSON Parse Edilmis: %@", JSON);
         
         SuppressPerformSelectorLeakWarning(
                                           // [self.Delegate performSelector:_Selector withObject:JSON];
@@ -103,7 +103,7 @@ _Pragma("clang diagnostic pop") \
     
     AFXMLRequestOperation *operation2 = [AFXMLRequestOperation XMLParserRequestOperationWithRequest:request2
         success:^(NSURLRequest *request2, NSHTTPURLResponse *response2, NSXMLParser *XMLParser) {
-                NSLog(@"TESTING PARSING");
+             //   NSLog(@"TESTING PARSING");
            // Xml Parse edilecek daha
          //   XMLParser.delegate=self;
                            

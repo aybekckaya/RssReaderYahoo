@@ -72,15 +72,16 @@
 {
     if(imgStr == nil)
     {
+      //  NSLog(@"Image Str Nil");
          // The entry has no image in it
         [self.activityIndicator setHidden:YES];
         self.EntryImageView.frame=CGRectZero;
-        self.NewsLbl.frame=CGRectMake(2,self.NewsLbl.frame.origin.y, self.frame.size.width-4, self.frame.size.height-self.HeaderLbl.frame.size.height-2);
+        self.NewsLbl.frame=CGRectMake(2,self.NewsLbl.frame.origin.y-35, self.frame.size.width-4, self.frame.size.height-self.HeaderLbl.frame.size.height+33);
     }
     else
     {
         // There is valid image in the entry
-        
+     //   NSLog(@"Im Str: %@",imgStr);
         [self.EntryImageView setImageWithURL:[NSURL URLWithString:imgStr] placeholderImage:nil]; // loads image from url
     }
 

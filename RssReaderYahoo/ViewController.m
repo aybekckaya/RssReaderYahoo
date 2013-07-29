@@ -35,27 +35,43 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    
+    RssURL=@"http://news.yahoo.com/rss/";
     
     
     
     CHUD=[[MBProgressHUD alloc]initWithView:self.view];
     [self.view addSubview:CHUD];
     CHUD.delegate=self;
-    [CHUD show:YES];
+   
     
     [self.LoadingIndicator setHidden:YES];
     
+    [self FetchRssInfo:YES];
+    
+    
+    
+    
+}
+
+
+-(void)FetchRssInfo:(BOOL) ProgressShow
+{
+    if(ProgressShow == YES)
+    {
+        [CHUD show:YES];
+    }
+    else
+    {
+        [self.LoadingIndicator setHidden:NO];
+        [self.LoadingIndicator startAnimating];
+    }
     
     TotalNumEntriesHasReached=NO;
-    // asdad
+    
     RssItems=[[NSMutableArray alloc]init];
     XmlParser =[Parser SharedParser];
     XmlParser.delegate=self;
-    [XmlParser ParseXmlAtURL:@"http://news.yahoo.com/rss/"];
-    
-    
-    
+    [XmlParser ParseXmlAtURL:RssURL];
 }
 
 
@@ -65,7 +81,7 @@
 -(void)ParserDidFetchRssItems:(NSArray *)RssArr
 {
     TotalNumOfEntries=[RssArr count];
-    [XmlParser CreateEntriesFromRssItems:0]; // init callas
+    [XmlParser CreateEntriesFromRssItems:0]; // init calls
 }
 
 
@@ -100,7 +116,7 @@
     [self.LoadingIndicator startAnimating];
     
     int fromEntryNum=[RssItems count];
-    NSLog(@"Loading New Entries");
+   // NSLog(@"Loading New Entries");
     [XmlParser CreateEntriesFromRssItems:fromEntryNum];
 }
 
@@ -144,7 +160,7 @@
     const NSInteger NEWSLABELTAG=1002;
     
     
-    static NSString *reuseIdentifier = @"Celli";
+    static NSString *reuseIdentifier = @"Cell";
     //asdeewe
     RssCellCL *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
     
@@ -157,15 +173,16 @@
         cell.HeaderLbl.tag=HEADERLABELTAG;
         cell.EntryImageView.tag=RSSIMAGETAG;
         
-        NSLog(@"Cell Created NOW: %d",indexPath.row);
+    //    NSLog(@"Cell Created NOW: %d",indexPath.row);
     }
     else
     {
+        
         cell.NewsLbl=(UILabel *)[cell viewWithTag:NEWSLABELTAG];
         cell.HeaderLbl=(UILabel *)[cell viewWithTag:HEADERLABELTAG];
         cell.EntryImageView=(UIImageView *)[cell viewWithTag:RSSIMAGETAG];
-     
-        NSLog(@"Cell Created BEFORE : %d",indexPath.row);
+        
+     //   NSLog(@"Cell Created BEFORE : %d",indexPath.row);
     }
     
     Entry *theEntry=[RssItems objectAtIndex:indexPath.row];
@@ -212,6 +229,8 @@
          
      }
     
+    
+      
 }
 
 

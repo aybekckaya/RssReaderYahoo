@@ -13,11 +13,7 @@
 #import "TitleViewCL.h"
 #import "DetailVC.h"
 
-/*
-    - Internet baglantisi olmadigi zamanki test 
-    - Loading background thread icinde calissin 
-     - scroll speede gore navbar bulaniklastirilabilir
- */
+
 
 @interface ViewController : UIViewController<ParserDelegate,MBProgressHUDDelegate,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
 {
@@ -28,6 +24,8 @@
     BOOL IsLoadingNewItems;
     int TotalNumOfEntries;
     BOOL TotalNumEntriesHasReached;
+    
+    NSString *RssURL;
 }
 
 

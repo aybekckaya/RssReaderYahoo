@@ -9,7 +9,7 @@
 #import "Parser.h"
 
 // how many rss items will be parsed in every request
-#define EntriesPerRequest 11
+#define EntriesPerRequest 3
 
 @implementation Parser
 @synthesize delegate;
@@ -49,7 +49,10 @@
 {
     if([ResponseData isKindOfClass:[NSError class]])
     {
-        NSLog(@"Error Occured: %@",[ResponseData description]);
+        //NSLog(@"Error Occured: %@",[ResponseData description]);
+        
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:[ResponseData description] delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
         return;
     }
     

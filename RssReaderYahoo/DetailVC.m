@@ -39,7 +39,7 @@
     
     // Loading Source Address
     
-    NSLog(@"Link : %@",NewsURL);
+  //  NSLog(@"Link : %@",NewsURL);
     
   //      NewsURL=@"asdad"; // error test
     NSURL *url=[NSURL URLWithString:NewsURL];

@@ -15,6 +15,15 @@
     [super setUp];
     
     // Set-up code here.
+   
+    
+    XmlParser =[Parser SharedParser];
+   STAssertNotNil(XmlParser, @"Xml Parser Should Not Be Null");
+    
+    
+    
+    
+    
 }
 
 - (void)tearDown
@@ -24,9 +33,40 @@
     [super tearDown];
 }
 
+
+
+
 - (void)testExample
 {
-    STFail(@"Unit tests are not implemented yet in RssReaderYahooTests");
+    [self XmlParserInstanceTest];
+    [self XmlParserTestForURL];
 }
+
+
+
+/*
+    @ singleton object : all instances must be same 
+ */
+-(void)XmlParserInstanceTest
+{
+    for (int i=0; i<10; i++) {
+        Parser *tempParser=[Parser SharedParser];
+        STAssertEqualObjects(tempParser, XmlParser, @"Objects Should be equal");
+    }
+}
+
+
+
+#pragma URL Test
+
+/*
+    @ for different urls does the code take correct parameters
+ */
+-(void)XmlParserTestForURL
+{
+    
+}
+
+#pragma URL Test End
 
 @end
