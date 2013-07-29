@@ -16,14 +16,15 @@
 /*
     - Internet baglantisi olmadigi zamanki test 
     - Loading background thread icinde calissin 
+     - scroll speede gore navbar bulaniklastirilabilir
  */
 
-@interface ViewController : UIViewController<ParserDelegate,MBProgressHUDDelegate,UITableViewDataSource,UITableViewDelegate,RssCellDelegate,UIScrollViewDelegate>
+@interface ViewController : UIViewController<ParserDelegate,MBProgressHUDDelegate,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
 {
     Parser *XmlParser;
     MBProgressHUD *CHUD;
     NSMutableArray *RssItems;
-    int currentSelection;
+  
     BOOL IsLoadingNewItems;
     int TotalNumOfEntries;
     BOOL TotalNumEntriesHasReached;

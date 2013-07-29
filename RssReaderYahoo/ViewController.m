@@ -46,7 +46,7 @@
     
     [self.LoadingIndicator setHidden:YES];
     
-    currentSelection=-1;
+    
     TotalNumEntriesHasReached=NO;
     // asdad
     RssItems=[[NSMutableArray alloc]init];
@@ -131,23 +131,20 @@
     
     RssCellCL *tableCell=(RssCellCL *)[views objectAtIndex:0];
     
-    if(indexPath.row == currentSelection)
-    {
-        return tableCell.frame.size.height;
-    }
-
-    return tableCell.frame.size.height-40;
+  
+    return tableCell.frame.size.height;
 }
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    const NSInteger TABLECELLTAG=1000;
-    const NSInteger TwitterBtnTag=1071;
-    const NSInteger DetailBtnTag=1072;
+    const NSInteger HEADERLABELTAG=1000; // Takilmalari onlemek icin
+    const NSInteger RSSIMAGETAG=1001;
+    const NSInteger NEWSLABELTAG=1002;
     
-    static NSString *reuseIdentifier = @"Cell";
+    
+    static NSString *reuseIdentifier = @"Celli";
     //asdeewe
     RssCellCL *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
     
@@ -156,21 +153,18 @@
         NSArray* views = [[NSBundle mainBundle] loadNibNamed:@"RssCell" owner:nil options:nil];
         
         cell =(RssCellCL *)[views objectAtIndex:0];
-        cell.delegate=self;
-      
-         
-        cell.twitterBtn.tag=TwitterBtnTag;
-        cell.detailsBtn.tag=DetailBtnTag;
+        cell.NewsLbl.tag=NEWSLABELTAG;
+        cell.HeaderLbl.tag=HEADERLABELTAG;
+        cell.EntryImageView.tag=RSSIMAGETAG;
         
         NSLog(@"Cell Created NOW: %d",indexPath.row);
     }
     else
     {
-        // [cell CloseCell];
-        cell.twitterBtn=(UIButton *)[cell viewWithTag:TwitterBtnTag];
-        cell.detailsBtn=(UIButton *)[cell viewWithTag:DetailBtnTag];
-      //  [cell CloseCell];
-        // cell has created Beforej
+        cell.NewsLbl=(UILabel *)[cell viewWithTag:NEWSLABELTAG];
+        cell.HeaderLbl=(UILabel *)[cell viewWithTag:HEADERLABELTAG];
+        cell.EntryImageView=(UIImageView *)[cell viewWithTag:RSSIMAGETAG];
+     
         NSLog(@"Cell Created BEFORE : %d",indexPath.row);
     }
     
@@ -180,46 +174,17 @@
     [cell SetEntryImageStr:[theEntry imageStr]];
     cell.EntryLink=[theEntry link];
     
-    if(indexPath.row != currentSelection)
-    {
-     
-        [cell CloseCell];
-    }
-    else
-    {
-        [cell OpenCell];
-    }
-    
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    RssCellCL *OldSelectedCell;
-    if(currentSelection != -1)
-    {
-        
-        //OldSelectedCell=(RssCellCL *)[tableView viewWithTag:currentSelection+1];
-        OldSelectedCell=(RssCellCL *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:currentSelection inSection:0]];
-    }
-       
+   // Push To Detail View Controller
+    DetailVC *newViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailNewsView"];
+    Entry *theEntry=(Entry *)[RssItems objectAtIndex:indexPath.row];
+    newViewController.NewsURL=[theEntry link];
+    [self.navigationController pushViewController:newViewController animated:YES];
     
-    int row = [indexPath row];
-    currentSelection = row;
-    
-   // RssCellCL *NewSelectedCell=(RssCellCL *)[tableView viewWithTag:row+1];
-    RssCellCL *NewSelectedCell=(RssCellCL *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:currentSelection inSection:0]];
- 
-    [tableView beginUpdates];
-    
-        [NewSelectedCell OpenCell];
-        if(OldSelectedCell != nil)
-        {
-            [OldSelectedCell CloseCell];
-        }
-    
-    [tableView endUpdates];
-  
 }
 
 #pragma mark TableViewDelegates END
@@ -229,17 +194,15 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    // Aim to use TotalNumEntriesHasReached value: Savign huge amount of time (about 4-5 ms)
+    // Aim to use TotalNumEntriesHasReached value: Saving huge amount of time (about 4-5 ms)
      if(TotalNumEntriesHasReached == NO)
      {
          CGPoint tableBottomPt=CGPointMake(scrollView.contentOffset.x, scrollView.contentOffset.y+self.RssTable.frame.size.height-44);
          NSIndexPath *index= [self.RssTable indexPathForRowAtPoint:tableBottomPt];
-    // NSLog(@"%f",tableBottomPt.y);
-    //NSLog(@"%d",index.row);
+    
     
       if( (index.row == [RssItems count]-1) && (IsLoadingNewItems == NO) && (index.row <TotalNumOfEntries-1))
         {
-            //NSLog(@"Should Load New Items");
             [self LoadNewEntries];
         }
        else if(index.row == TotalNumOfEntries-1)
@@ -258,30 +221,6 @@
 
 
 
-
-#pragma mark RssCell Delegate
-
-/*
-     @ push to detailview or share news on the twitter 
- */
--(void)RssCellButtonDidClicked:(UIButton *)button Link:(NSString *)_link
-{
-    if([button tag] == 1071)
-    {
-        // Twitter Btn
-    }
-    else if([button tag] == 1072)
-    {
-        // details Btn
-        DetailVC *newViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailNewsView"];
-        newViewController.NewsURL=_link;
-        [self.navigationController pushViewController:newViewController animated:YES];
-        
-    }
-}
-
-
-#pragma mark End RssCell Delegate
 
 
 

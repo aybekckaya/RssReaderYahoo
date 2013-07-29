@@ -50,9 +50,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.94782712099999999" blue="0.88879580189999996" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Yahoo News" id="ZzE-CT-5dA">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="2AF-3W-ABw"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Yahoo News" id="ZzE-CT-5dA"/>
                     <connections>
                         <outlet property="LoadingIndicator" destination="dcX-0s-CC7" id="1o0-tv-jpM"/>
                         <outlet property="RssTable" destination="71P-5M-Pb2" id="D0k-vm-vHB"/>
@@ -82,7 +80,14 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.94782712099999999" blue="0.88879580189999996" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="reV-PK-A25"/>
+                    <navigationItem key="navigationItem" title="Yahoo News" id="reV-PK-A25">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="KB6-WA-QQg"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="2AF-3W-ABw">
+                            <connections>
+                                <action selector="OpenActionSheet:" destination="UA2-ok-gQg" id="RgL-Gh-jCN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="webview" destination="0Tb-ij-hqG" id="ayn-2X-ajA"/>
                     </connections>
@@ -96,6 +101,7 @@
         <class className="DetailVC" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailVC.h"/>
             <relationships>
+                <relationship kind="action" name="OpenActionSheet:"/>
                 <relationship kind="outlet" name="webview" candidateClass="UIWebView"/>
             </relationships>
         </class>

@@ -9,7 +9,7 @@
 #import "RssCellCL.h"
 
 @implementation RssCellCL
-@synthesize delegate;
+
 @synthesize EntryLink;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -24,8 +24,7 @@
 
 -(void)awakeFromNib
 {
-    self.twitterBtn.alpha=0;
-    self.detailsBtn.alpha=0;
+    
 }
 
 
@@ -33,73 +32,8 @@
 {
     [super setSelected:selected animated:animated];
 
-    /*
-    // Configure the view for the selected state
-   // NSLog(@"In class Selected");
-    [self.twitterBtn setAlpha:0];
-    [self.detailsBtn setAlpha:0];
-    if(selected == YES)
-    {
-        //NSLog(@"Selected YES");
-        
-        [self.twitterBtn setHighlighted:NO];
-        [self.detailsBtn setHighlighted:NO];
-        
-        [UIView animateWithDuration:1.0f animations:^{
-            [self.twitterBtn setAlpha:1];
-            [self.detailsBtn setAlpha:1];
-        }];
-         NSLog(@"Cell Tag :%d selected YES",self.CellInlineTag);
-    }
-    else if(selected == NO)
-    {
-        NSLog(@"Cell Tag :%d selected NO",self.CellInlineTag);
-    }
-
-    */
-    
 }
 
-
-
--(void)OpenCell
-{
-    [self.twitterBtn setHighlighted:NO];
-    [self.detailsBtn setHighlighted:NO];
-    
-    [UIView animateWithDuration:1.0f animations:^{
-        [self.twitterBtn setAlpha:1];
-        [self.detailsBtn setAlpha:1];
-    }];
-
-}
-
--(void)CloseCell
-{
-    [self.twitterBtn setHighlighted:NO];
-    [self.detailsBtn setHighlighted:NO];
-    
-    [UIView animateWithDuration:0.1f animations:^{
-        [self.twitterBtn setAlpha:0];
-        [self.detailsBtn setAlpha:0];
-    }];
-
-}
-
-
--(IBAction)ButtonOnClick:(id)sender
-{
-     if([sender tag] == 1071)
-     {
-         // Twitter Btn
-         [delegate RssCellButtonDidClicked:self.twitterBtn Link:EntryLink];
-     }
-    else if([sender tag] == 1072)
-    {
-        // Details Btn
-        [delegate RssCellButtonDidClicked:self.detailsBtn Link:EntryLink];
-    }
-}
 
 
 -(void)SetHeaderLblText:(NSString *)text

@@ -8,17 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
+#import <Social/Social.h>
 
-@interface DetailVC : UIViewController<UIWebViewDelegate,MBProgressHUDDelegate>
+@interface DetailVC : UIViewController<UIWebViewDelegate,MBProgressHUDDelegate,UIActionSheetDelegate>
 {
     MBProgressHUD *CHUD;
     NSString *NewsURL;
+    
+    UIActionSheet *ActSheet;
+    
 }
 
 @property(nonatomic,strong) NSString *NewsURL;
 
 @property(nonatomic,weak) IBOutlet UIWebView *webview;
 
-
+-(IBAction)OpenActionSheet:(id)sender;
 
 @end
