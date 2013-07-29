@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Parser.h"
 #import "MBProgressHUD.h"
-#import "RssCellCL.h"
 #import "TitleViewCL.h"
 #import "DetailVC.h"
+
 
 
 
@@ -24,13 +24,13 @@
     BOOL IsLoadingNewItems;
     int TotalNumOfEntries;
     BOOL TotalNumEntriesHasReached;
-    
+   
     NSString *RssURL;
 }
 
 
 @property(nonatomic,weak) IBOutlet UITableView *RssTable;
-@property(nonatomic,strong) IBOutlet UIActivityIndicatorView *LoadingIndicator;
+
 
 
 @end

@@ -12,6 +12,7 @@
 #import "TFNetwork.h"
 #import "TFStrings.h"
 #import "Regex.h"
+#import "NSString+HTML.h"
 
 @class  Parser;
 
@@ -31,8 +32,14 @@
     NSMutableArray *RssItems; // all items but havent created object from them yet
     id<ParserDelegate> delegate;
     
+    CGRect DescFrame;
+    CGRect HeaderFrame;
+     CGRect ImageFrame;
 }
 @property(nonatomic,strong) id<ParserDelegate > delegate;
+@property(nonatomic)  CGRect DescFrame;
+@property(nonatomic)  CGRect HeaderFrame;
+@property(nonatomic)  CGRect ImageFrame;
 
 /*
     @ Singleton Parser Object

@@ -37,14 +37,14 @@
     
     RssURL=@"http://news.yahoo.com/rss/";
     
-    
+   
     
     CHUD=[[MBProgressHUD alloc]initWithView:self.view];
     [self.view addSubview:CHUD];
     CHUD.delegate=self;
    
     
-    [self.LoadingIndicator setHidden:YES];
+   
     
     [self FetchRssInfo:YES];
     
@@ -62,8 +62,7 @@
     }
     else
     {
-        [self.LoadingIndicator setHidden:NO];
-        [self.LoadingIndicator startAnimating];
+       
     }
     
     TotalNumEntriesHasReached=NO;
@@ -71,6 +70,9 @@
     RssItems=[[NSMutableArray alloc]init];
     XmlParser =[Parser SharedParser];
     XmlParser.delegate=self;
+    XmlParser.DescFrame=CGRectMake(80, 88, 237, 65);
+    XmlParser.HeaderFrame=CGRectMake(0, 0, 320, 42);
+    XmlParser.ImageFrame=CGRectMake(4, 88, 72, 65);
     [XmlParser ParseXmlAtURL:RssURL];
 }
 
@@ -94,8 +96,7 @@
    
       
     
-    [self.LoadingIndicator stopAnimating];
-    [self.LoadingIndicator setHidden:YES];
+   
     IsLoadingNewItems=NO;
     
     // CHUD has shown only at first query
@@ -112,8 +113,7 @@
 -(void)LoadNewEntries
 {
     IsLoadingNewItems=YES;
-    [self.LoadingIndicator setHidden:NO];
-    [self.LoadingIndicator startAnimating];
+   
     
     int fromEntryNum=[RssItems count];
    // NSLog(@"Loading New Entries");
@@ -140,58 +140,47 @@
 
 
 
-
+/*
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSArray* views = [[NSBundle mainBundle] loadNibNamed:@"RssCell" owner:nil options:nil];
-    
-    RssCellCL *tableCell=(RssCellCL *)[views objectAtIndex:0];
-    
-  
-    return tableCell.frame.size.height;
+    return 197;
 }
-
+*/
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    const NSInteger HEADERLABELTAG=1000; // Takilmalari onlemek icin
-    const NSInteger RSSIMAGETAG=1001;
-    const NSInteger NEWSLABELTAG=1002;
-    
-    
     static NSString *reuseIdentifier = @"Cell";
-    //asdeewe
-    RssCellCL *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
     
-    if(cell == nil)
-    {
-        NSArray* views = [[NSBundle mainBundle] loadNibNamed:@"RssCell" owner:nil options:nil];
-        
-        cell =(RssCellCL *)[views objectAtIndex:0];
-        cell.NewsLbl.tag=NEWSLABELTAG;
-        cell.HeaderLbl.tag=HEADERLABELTAG;
-        cell.EntryImageView.tag=RSSIMAGETAG;
-        
-    //    NSLog(@"Cell Created NOW: %d",indexPath.row);
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+    
+    if (cell == nil) {
+       
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+        //NSLog(@"Cell Created NOW");
     }
     else
     {
-        
-        cell.NewsLbl=(UILabel *)[cell viewWithTag:NEWSLABELTAG];
-        cell.HeaderLbl=(UILabel *)[cell viewWithTag:HEADERLABELTAG];
-        cell.EntryImageView=(UIImageView *)[cell viewWithTag:RSSIMAGETAG];
-        
-     //   NSLog(@"Cell Created BEFORE : %d",indexPath.row);
+       // NSLog(@"cell Created Befoe");
     }
     
-    Entry *theEntry=[RssItems objectAtIndex:indexPath.row];
-    [cell SetNewsLblText:[theEntry description]];
-    [cell SetHeaderLblText:[theEntry title]];
-    [cell SetEntryImageStr:[theEntry imageStr]];
-    cell.EntryLink=[theEntry link];
+    //set cell properties
+    
+    Entry *theEntry=(Entry *)[RssItems objectAtIndex:indexPath.row];
+    
+     ((UILabel *)[cell viewWithTag:1003]).text=[theEntry title];
+    ((UILabel *)[cell viewWithTag:1003]).frame=[theEntry HeaderLabelFrame];
+    //[((UILabel *)[cell viewWithTag:1003]) setBackgroundColor:[UIColor greenColor]];
+    
+    ((UILabel *)[cell viewWithTag:1002]).text=[theEntry description];
+     ((UILabel *)[cell viewWithTag:1002]).frame=[theEntry DescLabelFrame];
+   //  [((UILabel *)[cell viewWithTag:1002]) setBackgroundColor:[UIColor redColor]];
+    
+   [((UIImageView *)[cell viewWithTag:1001]) setImageWithURL:[NSURL URLWithString:[theEntry imageStr]] ];
+   ((UIImageView *)[cell viewWithTag:1001]).frame=[theEntry ImageViewFrame];
+    
     
     return cell;
+
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

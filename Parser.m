@@ -9,10 +9,12 @@
 #import "Parser.h"
 
 // how many rss items will be parsed in every request
-#define EntriesPerRequest 3
+#define EntriesPerRequest 4
 
 @implementation Parser
 @synthesize delegate;
+@synthesize HeaderFrame,DescFrame;
+@synthesize ImageFrame;
 
 +(Parser *)SharedParser
 {
@@ -92,15 +94,40 @@
     for(int i=min ; i<max ;i++)
     {
         NSDictionary *item=[RssItems objectAtIndex:i];
-        NSArray *keys=[item allKeys];
+       
         
         Entry *theEntry=[[Entry alloc]init];
         theEntry.link=[item objectForKey:@"link"];
-        theEntry.title=[item objectForKey:@"title"];
+        theEntry.title=[[item objectForKey:@"title"] stringByConvertingHTMLToPlainText]  ;
         NSString *rawDescriptionStr=[item objectForKey:@"description"];
-        theEntry.description=[self HtmlStringToReadableString:rawDescriptionStr];
+        theEntry.description=[[self HtmlStringToReadableString:rawDescriptionStr] stringByConvertingHTMLToPlainText];
+        
+        
+         //NSLog(@"Text Length: %d",[theEntry.description length]);
+        
         theEntry.imageStr=[[item objectForKey:@"media:content"]objectForKey:@"_url"];
         
+        theEntry.ImageViewFrame=ImageFrame;
+        theEntry.DescLabelFrame=DescFrame;
+        
+        if(theEntry.imageStr == nil)
+        {
+            theEntry.ImageViewFrame=CGRectZero;
+            theEntry.DescLabelFrame=CGRectMake(3, theEntry.DescLabelFrame.origin.y, 314, theEntry.DescLabelFrame.size.height);
+        }
+        
+        // Label Adjustments
+        theEntry.HeaderLabelFrame=[self AdjustLabelFrameForHeaderText:theEntry.title LabelFrame:HeaderFrame];
+        
+        
+        
+        theEntry.DescLabelFrame=CGRectMake(theEntry.DescLabelFrame.origin.x, theEntry.HeaderLabelFrame.size.height+3, theEntry.DescLabelFrame.size.width, theEntry.DescLabelFrame.size.height);
+        
+        theEntry.DescLabelFrame=[self AdjustLabelFrameForDescText:[theEntry description] LabelFrame:theEntry.DescLabelFrame];
+        
+        if (theEntry.imageStr != nil) {
+            theEntry.ImageViewFrame=CGRectMake(theEntry.ImageViewFrame.origin.x, theEntry.DescLabelFrame.origin.y, theEntry.ImageViewFrame.size.width, theEntry.ImageViewFrame.size.height);
+        }
         
         
         [Entries addObject:theEntry];
@@ -115,6 +142,62 @@
 #pragma mark RssEntryCreation END
 
 
+
+
+#pragma  mark Label Size Adjustments 
+
+
+-(CGRect) AdjustLabelFrameForHeaderText:(NSString *)text LabelFrame:(CGRect) _labelFrame
+{
+   
+    
+    if(text.length < 38)
+    {
+        return CGRectMake(_labelFrame.origin.x, _labelFrame.origin.y, _labelFrame.size.width, _labelFrame.size.height/2); 
+    }
+    
+    return _labelFrame;
+}
+
+
+
+-(CGRect) AdjustLabelFrameForDescText:(NSString *)text LabelFrame:(CGRect) _labelFrame
+{
+    
+    NSLog(@"Text Length : %d",[text length]);
+    
+    int det;
+    float heightRequired;
+    
+    if(_labelFrame.size.width > 270)
+    {
+        // Big label (IMPLEMENT)
+        // Small Label
+         det=(int)1+([text length]/95);
+        heightRequired=det *12;
+    }
+    else
+    {
+        // Small Label
+        det=(int)1+([text length]/55);
+        heightRequired=det *12;
+    }
+   
+    NSLog(@"height required : %f",heightRequired);
+    NSLog(@"curr height: %f",_labelFrame.size.height);
+    
+    if(heightRequired > _labelFrame.size.height)
+    {
+        return _labelFrame;
+    }
+    
+    
+    _labelFrame=CGRectMake(_labelFrame.origin.x, _labelFrame.origin.y, _labelFrame.size.width, heightRequired);
+    
+    return _labelFrame;
+}
+
+#pragma  mark Label Size Adjustments  END
 
 /*
     @ This function is used to convert rss description section's (html) string to human readable string
@@ -137,28 +220,5 @@
 
 
 
-
-
-/*
--(void)XmlDataToEntryObject:(NSDictionary *)xmlDict
-{
-    NSArray *keys=[xmlDict allKeys];
-    
-    NSDictionary *Channeldata=[xmlDict objectForKey:@"channel"];
-    
-    keys=[Channeldata allKeys];
-    
-    NSArray *items=[Channeldata objectForKey:@"item"];
-    
-    for(NSDictionary *itemDict in items)
-    {
-        Entry *theEntry=[[Entry alloc]init];
-        
-    }
-    
-    
-}
-
-*/
 
 @end

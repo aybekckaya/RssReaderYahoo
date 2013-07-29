@@ -10,5 +10,8 @@
 
 @implementation Entry
 @synthesize description,publishDateStr,imageStr,link,title;
+@synthesize DescLabelFrame;
+@synthesize HeaderLabelFrame;
+@synthesize ImageViewFrame;
 
 @end
