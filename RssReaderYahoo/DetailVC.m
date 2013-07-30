@@ -52,30 +52,8 @@
 
 -(void)CreateActionSheet
 {
-    /*
-    UIActionSheet *actionSheet = [[UIActionSheet alloc]
-                                  4
-                                  initWithTitle:@"Rate this App"
-                                  5
-                                  delegate:self
-                                  6
-                                  cancelButtonTitle:@"Cancel Button"
-                                  7
-                                  destructiveButtonTitle:nil
-                                  8
-                                  otherButtonTitles:@"Rate 1 Star", @"Rate 2 Stars",
-                                  9
-                                  @"Rate 3 Starts", @"Rate 4 Stars", @"Rate 5 Stars", nil];
-    10
-    
-    11
-    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
-    12
-    [actionSheet showInView:self.view];
-  */
-    ActSheet=[[UIActionSheet alloc]initWithTitle:@"Social" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Twitter", nil];
-    
-    
+ 
+    ActSheet=[[UIActionSheet alloc]initWithTitle:@"Social" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Twitter",@"FaceBook", nil];
     
 }
 
@@ -117,6 +95,11 @@
          // Twitter Share
          [self ShareOnTwitter];
      }
+    else if(buttonIndex == 1)
+    {
+        // facebook share 
+        [self ShareOnFacebook];
+    }
 
 }
 
@@ -156,6 +139,42 @@
 }
 
 #pragma mark Twitter Sharing END
+
+
+
+#pragma mark FaceBookShare
+
+-(void)ShareOnFacebook
+{
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
+    {
+        SLComposeViewController *FaceSheet = [SLComposeViewController
+                                               composeViewControllerForServiceType:SLServiceTypeFacebook];
+        [FaceSheet setInitialText:nil];
+        
+        
+        [FaceSheet addURL:[NSURL URLWithString:NewsURL]];
+        
+        [self presentViewController:FaceSheet animated:YES completion:nil];
+        
+        
+        // On Post Query Complete this block will be called
+        SLComposeViewControllerCompletionHandler myBlock = ^(SLComposeViewControllerResult result){
+            if (result == SLComposeViewControllerResultDone)
+            {
+                // UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Success" message:@"Your message has been sent successfully" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                // [alert show];
+            }
+        };
+        
+        FaceSheet.completionHandler =myBlock;
+        
+    }
+
+}
+
+
+#pragma mark END Facebook Share
 
 
 - (void)didReceiveMemoryWarning
