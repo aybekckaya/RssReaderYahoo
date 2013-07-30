@@ -16,6 +16,7 @@
 
 @class  Parser;
 
+
 @protocol ParserDelegate <NSObject>
 
 @required
@@ -54,5 +55,8 @@
 
 
 -(void)CreateEntriesFromRssItems:(int) fromIndex;
+
+
+-(NSMutableArray *)XmlToNSArray:(NSString *)xmlData;
 
 @end

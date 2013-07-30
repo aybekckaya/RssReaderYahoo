@@ -20,11 +20,17 @@
     XmlParser =[Parser SharedParser];
    STAssertNotNil(XmlParser, @"Xml Parser Should Not Be Null");
     
+    XmlParser.delegate=self;
     
-    
+      
+  
     
     
 }
+
+
+
+
 
 - (void)tearDown
 {
@@ -40,6 +46,8 @@
 {
     [self XmlParserInstanceTest];
     [self XmlParserTestForURL];
+    [self XmlDataTest];
+    
 }
 
 
@@ -49,10 +57,10 @@
  */
 -(void)XmlParserInstanceTest
 {
-    for (int i=0; i<10; i++) {
+   
         Parser *tempParser=[Parser SharedParser];
         STAssertEqualObjects(tempParser, XmlParser, @"Objects Should be equal");
-    }
+    
 }
 
 
@@ -64,9 +72,82 @@
  */
 -(void)XmlParserTestForURL
 {
+    [XmlParser ParseXmlAtURL:@"http://www.google.com"]; // non xml source
+    [XmlParser ParseXmlAtURL:@"abcd"]; // corrupted string
+    [XmlParser ParseXmlAtURL:@"http://news.yahoo.com/rss/"]; // correct xml source
+}
+
+
+-(void)ParserDidFetchRssItems:(NSArray *)RssArr
+{
+
+    STAssertNil(RssArr, @"RssArr is nil");
+}
+
+
+
+
+#pragma URL Test End
+
+
+
+#pragma mark Xml Data Tests
+
+-(void)XmlDataTest
+{
+    NSString *url=@"http://news.yahoo.com/rss/";
+    NSString *source=[self WebRequest:url];
+    NSMutableArray *Arr=[XmlParser XmlToNSArray:source];
+    if ([Arr count] == 0) {
+        STFail(@"Parser XmlToNsArray should not be nil");
+    }
+    
+    // corrupted URL test 
+    url=@"http://news.yahoo.com/rss1asd/";
+     source=[self WebRequest:url];
+    Arr=[XmlParser XmlToNSArray:source];
+    
+    if ([Arr count] != 0) {
+        STFail(@"Parser XmlToNsArray should not be nil (incorrectURL given)");
+    }
+    
     
 }
 
-#pragma URL Test End
+
+
+
+
+
+#pragma mark XmlDataTests END
+
+
+
+
+#pragma Entry Object Tests
+
+
+
+#pragma EntryObjectTest End
+
+
+
+#pragma WebRequest Sync
+
+
+-(NSString *)WebRequest:(NSString *)URL
+{
+    // Send a synchronous request
+    NSURLRequest * urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:URL]];
+    NSURLResponse * response = nil;
+    NSError * error = nil;
+    NSData * data = [NSURLConnection sendSynchronousRequest:urlRequest
+                                          returningResponse:&response
+                                                      error:&error];
+     return [TFStrings DataToString:data];
+    
+}
+
+#pragma WebRequest Sync END
 
 @end

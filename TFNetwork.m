@@ -78,6 +78,10 @@ _Pragma("clang diagnostic pop") \
     
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+       
+        
+        
         // On Success
         [delegate NetworkDidEndFetcing:responseObject];
         

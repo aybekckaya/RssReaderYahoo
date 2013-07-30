@@ -8,12 +8,14 @@
 
 #import "ViewController.h"
 
+#define CellMarginBottom 15
+
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
-
+@synthesize CHUD;
 
 
 
@@ -35,6 +37,9 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    // For testing below part should be closed 
+    
+     
     RssURL=@"http://news.yahoo.com/rss/";
     
    
@@ -43,13 +48,7 @@
     [self.view addSubview:CHUD];
     CHUD.delegate=self;
    
-    
-   
-    
     [self FetchRssInfo:YES];
-    
-    
-    
     
 }
 
@@ -60,10 +59,7 @@
     {
         [CHUD show:YES];
     }
-    else
-    {
-       
-    }
+    
     
     TotalNumEntriesHasReached=NO;
     
@@ -82,6 +78,11 @@
 
 -(void)ParserDidFetchRssItems:(NSArray *)RssArr
 {
+    if(RssArr == nil)
+    {
+        // An error occured
+        [CHUD hide:YES];
+    }
     TotalNumOfEntries=[RssArr count];
     [XmlParser CreateEntriesFromRssItems:0]; // init calls
 }
@@ -106,6 +107,15 @@
 #pragma mark ParserDelegate END
 
 
+#pragma mark PAGE Refresh
+
+-(IBAction)RefreshPage:(id)sender
+{
+    [self FetchRssInfo:YES];
+}
+
+
+#pragma mark Page Refresh End
 
 
 #pragma LoadingNewItems
@@ -140,12 +150,18 @@
 
 
 
-/*
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 197;
+    Entry *theEntry=(Entry *)[RssItems objectAtIndex:indexPath.row];
+    
+    float heightForMiddleFrame=[theEntry DescLabelFrame].size.height > [theEntry ImageViewFrame].size.height ? [theEntry DescLabelFrame].size.height : [theEntry ImageViewFrame].size.height; // Sometimes the description label's height is more than image view's height.
+    
+    float heightRequired=[theEntry HeaderLabelFrame].size.height + heightForMiddleFrame+CellMarginBottom;
+    
+    return heightRequired;
 }
-*/
+
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -175,8 +191,11 @@
      ((UILabel *)[cell viewWithTag:1002]).frame=[theEntry DescLabelFrame];
    //  [((UILabel *)[cell viewWithTag:1002]) setBackgroundColor:[UIColor redColor]];
     
-   [((UIImageView *)[cell viewWithTag:1001]) setImageWithURL:[NSURL URLWithString:[theEntry imageStr]] ];
-   ((UIImageView *)[cell viewWithTag:1001]).frame=[theEntry ImageViewFrame];
+         
+    [((UIImageView *)[cell viewWithTag:1001]) setImageWithURL:[NSURL URLWithString:[theEntry imageStr]] ];
+    ((UIImageView *)[cell viewWithTag:1001]).frame=[theEntry ImageViewFrame];
+    
+    
     
     
     return cell;

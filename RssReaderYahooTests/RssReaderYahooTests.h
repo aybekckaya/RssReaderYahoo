@@ -8,9 +8,11 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import "Parser.h"
+#import "XMLDictionary.h"
 
-@interface RssReaderYahooTests : SenTestCase
+@interface RssReaderYahooTests : SenTestCase<ParserDelegate,TFNetworkDelegate>
 {
     Parser *XmlParser;
+    TFNetwork *network;
 }
 @end

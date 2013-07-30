@@ -27,10 +27,10 @@
    
     NSString *RssURL;
 }
-
+@property(nonatomic,strong) MBProgressHUD *CHUD;
 
 @property(nonatomic,weak) IBOutlet UITableView *RssTable;
 
-
+-(IBAction)RefreshPage:(id)sender;
 
 @end

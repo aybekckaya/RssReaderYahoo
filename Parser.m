@@ -53,20 +53,27 @@
     {
         //NSLog(@"Error Occured: %@",[ResponseData description]);
         
-        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:[ResponseData description] delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        // For Testing
+      //  [delegate ParserDidFetchRssItems:nil];
+       // return;
+        
+         [delegate ParserDidFetchRssItems:nil];
+        
+        NSString *errorStr=[[ResponseData userInfo]objectForKey:@"NSLocalizedDescription"];
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:errorStr delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert show];
+       
         return;
     }
     
     
     NSString *strdata=[TFStrings DataToString:ResponseData]; // Will Parse this data
-    NSDictionary *xmlDict=[NSDictionary dictionaryWithXMLString:strdata];
+   
     
     // Creating Rss Items
     
     RssItems=[[NSMutableArray alloc]init];
-    NSDictionary *Channeldata=[xmlDict objectForKey:@"channel"];
-    RssItems=[Channeldata objectForKey:@"item"];
+    RssItems=[self XmlToNSArray:strdata];
     
     
     [delegate ParserDidFetchRssItems:RssItems];
@@ -80,6 +87,28 @@
 
 #pragma NetworkDelegate END
 
+
+#pragma XmlDataToNSArray
+
+-(NSMutableArray *)XmlToNSArray:(NSString *)xmlData
+{
+    NSMutableArray *DataArr=[[NSMutableArray alloc]init];
+    NSDictionary *xmlDict=[NSDictionary dictionaryWithXMLString:xmlData];
+   
+    NSDictionary *Channeldata=[xmlDict objectForKey:@"channel"];
+    
+    if(Channeldata == nil)
+    {
+         // On Error return empty Array
+        return DataArr;
+    }
+    
+    DataArr=[Channeldata objectForKey:@"item"];
+    
+    return DataArr;
+}
+
+#pragma XmlDataToNSArray END
 
 #pragma mark RssEntryCreation
 
@@ -208,7 +237,7 @@
     
     if([matches count] == 0)
     {
-        // In case the description gives as human readable String 
+        // In case the description given as human readable String 
         return HtmlString;
     }
     NSString *RawStr=[[matches objectAtIndex:0]objectAtIndex:0];

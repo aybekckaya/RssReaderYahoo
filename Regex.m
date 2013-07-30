@@ -18,11 +18,11 @@
  */
 +(NSMutableArray *)GetMatch:(NSString *)StrRaw Expression:(NSString *)Exp
 {
-    NSMutableArray *MatchStrArr=[[NSMutableArray alloc] init];
+  
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:Exp options:NSRegularExpressionCaseInsensitive error:NULL];
     NSString *str = StrRaw;
    // NSTextCheckingResult *match = [regex firstMatchInString:str options:0 range:NSMakeRange(0, [str length])];
-    NSTextCheckingResult *AllMatches=[regex matchesInString:str options:0 range:NSMakeRange(0, [str length])];
+    NSTextCheckingResult *AllMatches=(NSTextCheckingResult *)[regex matchesInString:str options:0 range:NSMakeRange(0, [str length])];
     //int NumMatches=[match numberOfRanges];
     
     NSMutableArray *ArrayOfMatches=[[NSMutableArray alloc] init]; // Final Array 

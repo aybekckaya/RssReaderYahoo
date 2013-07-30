@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A319972617A857F900361FF9 /* TestData.plist in Resources */ = {isa = PBXBuildFile; fileRef = A319972517A857F900361FF9 /* TestData.plist */; };
+		A319972717A857F900361FF9 /* TestData.plist in Resources */ = {isa = PBXBuildFile; fileRef = A319972517A857F900361FF9 /* TestData.plist */; };
 		A3919F8417A5DCE3002C550C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3919F8317A5DCE3002C550C /* Social.framework */; };
 		A397ADAA17A5537700CBE3CE /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A397ADA917A5537700CBE3CE /* MainStoryboard.storyboard */; };
 		A397ADAD17A5A4D400CBE3CE /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = A397ADAC17A5A4D400CBE3CE /* NSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -40,8 +42,6 @@
 		A39D1D6217A4C55A001E9CF3 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A39D1D4917A4C55A001E9CF3 /* MBProgressHUD.m */; };
 		A39D1D6317A4C55A001E9CF3 /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = A39D1D4B17A4C55A001E9CF3 /* Parser.m */; };
 		A39D1D6417A4C55A001E9CF3 /* Regex.m in Sources */ = {isa = PBXBuildFile; fileRef = A39D1D4D17A4C55A001E9CF3 /* Regex.m */; };
-		A39D1D6517A4C55A001E9CF3 /* RssCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A39D1D4E17A4C55A001E9CF3 /* RssCell.xib */; };
-		A39D1D6617A4C55A001E9CF3 /* RssCellCL.m in Sources */ = {isa = PBXBuildFile; fileRef = A39D1D5017A4C55A001E9CF3 /* RssCellCL.m */; };
 		A39D1D6717A4C55A001E9CF3 /* TFNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = A39D1D5217A4C55A001E9CF3 /* TFNetwork.m */; };
 		A39D1D6817A4C55A001E9CF3 /* TFStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = A39D1D5417A4C55A001E9CF3 /* TFStrings.m */; };
 		A39D1D6917A4C55A001E9CF3 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = A39D1D5617A4C55A001E9CF3 /* UIImageView+AFNetworking.m */; };
@@ -60,6 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A319972517A857F900361FF9 /* TestData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TestData.plist; sourceTree = "<group>"; };
 		A3919F8317A5DCE3002C550C /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		A397ADA917A5537700CBE3CE /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		A397ADAB17A5A4D400CBE3CE /* NSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTML.h"; sourceTree = "<group>"; };
@@ -115,9 +116,6 @@
 		A39D1D4B17A4C55A001E9CF3 /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
 		A39D1D4C17A4C55A001E9CF3 /* Regex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Regex.h; sourceTree = "<group>"; };
 		A39D1D4D17A4C55A001E9CF3 /* Regex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Regex.m; sourceTree = "<group>"; };
-		A39D1D4E17A4C55A001E9CF3 /* RssCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RssCell.xib; sourceTree = "<group>"; };
-		A39D1D4F17A4C55A001E9CF3 /* RssCellCL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RssCellCL.h; sourceTree = "<group>"; };
-		A39D1D5017A4C55A001E9CF3 /* RssCellCL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RssCellCL.m; sourceTree = "<group>"; };
 		A39D1D5117A4C55A001E9CF3 /* TFNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFNetwork.h; sourceTree = "<group>"; };
 		A39D1D5217A4C55A001E9CF3 /* TFNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFNetwork.m; sourceTree = "<group>"; };
 		A39D1D5317A4C55A001E9CF3 /* TFStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFStrings.h; sourceTree = "<group>"; };
@@ -190,9 +188,6 @@
 				A397ADAF17A5A53300CBE3CE /* GTMNSString+HTML.m */,
 				A397ADAB17A5A4D400CBE3CE /* NSString+HTML.h */,
 				A397ADAC17A5A4D400CBE3CE /* NSString+HTML.m */,
-				A39D1D4F17A4C55A001E9CF3 /* RssCellCL.h */,
-				A39D1D5017A4C55A001E9CF3 /* RssCellCL.m */,
-				A39D1D4E17A4C55A001E9CF3 /* RssCell.xib */,
 			);
 			name = RssCell;
 			sourceTree = "<group>";
@@ -304,6 +299,7 @@
 				A39D1D2A17A4C521001E9CF3 /* RssReaderYahooTests.h */,
 				A39D1D2B17A4C521001E9CF3 /* RssReaderYahooTests.m */,
 				A39D1D2517A4C521001E9CF3 /* Supporting Files */,
+				A319972517A857F900361FF9 /* TestData.plist */,
 			);
 			path = RssReaderYahooTests;
 			sourceTree = "<group>";
@@ -392,9 +388,9 @@
 				A39D1D0D17A4C520001E9CF3 /* Default.png in Resources */,
 				A39D1D0F17A4C520001E9CF3 /* Default@2x.png in Resources */,
 				A39D1D1117A4C520001E9CF3 /* Default-568h@2x.png in Resources */,
-				A39D1D6517A4C55A001E9CF3 /* RssCell.xib in Resources */,
 				A397ADAA17A5537700CBE3CE /* MainStoryboard.storyboard in Resources */,
 				A397ADB217A5B7AE00CBE3CE /* TitleView.xib in Resources */,
+				A319972617A857F900361FF9 /* TestData.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A39D1D2917A4C521001E9CF3 /* InfoPlist.strings in Resources */,
+				A319972717A857F900361FF9 /* TestData.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,7 +440,6 @@
 				A39D1D6217A4C55A001E9CF3 /* MBProgressHUD.m in Sources */,
 				A39D1D6317A4C55A001E9CF3 /* Parser.m in Sources */,
 				A39D1D6417A4C55A001E9CF3 /* Regex.m in Sources */,
-				A39D1D6617A4C55A001E9CF3 /* RssCellCL.m in Sources */,
 				A39D1D6717A4C55A001E9CF3 /* TFNetwork.m in Sources */,
 				A39D1D6817A4C55A001E9CF3 /* TFStrings.m in Sources */,
 				A39D1D6917A4C55A001E9CF3 /* UIImageView+AFNetworking.m in Sources */,
