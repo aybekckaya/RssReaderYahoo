@@ -22,12 +22,9 @@
 
 -(void)awakeFromNib
 {
-    /*
-    NSArray* views = [[NSBundle mainBundle] loadNibNamed:@"TitleView" owner:nil options:nil];
-    UILabel *NavBarTitleView=(TitleViewCL *)[views objectAtIndex:0];
-    UINavigationItem *navItem=self.navigationController.navigationItem;
-    [self.navigationController.navigationItem setTitleView:NavBarTitleView];
-     */
+
+   
+    
 }
 
 
@@ -42,7 +39,7 @@
      
     RssURL=@"http://news.yahoo.com/rss/";
     
-   
+  
     
     CHUD=[[MBProgressHUD alloc]initWithView:self.view];
     [self.view addSubview:CHUD];
@@ -112,6 +109,7 @@
 -(IBAction)RefreshPage:(id)sender
 {
     [self FetchRssInfo:YES];
+       
 }
 
 
